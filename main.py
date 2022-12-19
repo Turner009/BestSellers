@@ -36,11 +36,23 @@ def example_analysis(book_list):
 
 def analysis_one(book_list):
     print("Analysis of which book had the lowest number of reviews in 2018")
-
+    books_2018 = list(filter(lambda book: book['year'] == 2018, book_list))
+    least_reviewed_book = min(books_2018, key=lambda book: book['number_of_reviews'])
+    print(f"The least reviewed book in 2018 was {least_reviewed_book['name']}, being reviewed only {least_reviewed_book['number_of_reviews']} times!")
+    pass
 
 def analysis_two(book_list):
     print("Analysis of which genre (fiction or non-fiction) has appeared the most in the top 50's list")
-
+    top_50 = list(filter(lambda book: book['id'] <= 50, book_list))
+    fiction = [books for books in top_50 if books['genre'] == 'Fiction']
+    non_fiction = [books for books in top_50 if books['genre'] == 'Non Fiction']
+    
+    # most = {max(len(fiction), len(non_fiction))}
+    # print(most)
+    # print(f"{str(fiction[0]['genre'])}, {len(fiction)}")
+    compare = lambda genre1, genre2 :print(f"{str(genre1[0]['genre'])}, {len(genre1)}") if  len(genre1) > len(genre2) else print(f"{str(genre2[0]['genre'])}, {len(genre2)}")
+    compare(fiction, non_fiction)
+    # print(fiction[0]['genre'])
 
 def analysis_three(book_list):
     print("Analysis of which book has appeared the most in the top 50's list, and how many times it has appeared")
