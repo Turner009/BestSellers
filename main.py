@@ -44,16 +44,32 @@ def analysis_one(book_list):
 def analysis_two(book_list):
     print("Analysis of which genre (fiction or non-fiction) has appeared the most in the top 50's list")
     fiction = [books for books in book_list if books['genre'] == 'Fiction']
-    non_fiction = [books for books in book_list if books['genre'] == 'Non Fiction']
-    
-    
-    compare = lambda genre1, genre2 :print(f"{str(genre1[0]['genre'])} appeared the most with {len(genre1)} appearances.") if  len(genre1) > len(genre2) else print(f"{str(genre2[0]['genre'])} appeared the most with {len(genre2)} appearances")
+    non_fiction = [books for books in book_list if books['genre'] == 'Non Fiction']    
+    compare = lambda genre1, genre2 :print(f"{str(genre1[0]['genre'])} appeared the most with {len(genre1)} appearances.") if  len(genre1) > len(genre2) else print(f"{str(genre2[0]['genre'])} appeared the most with {len(genre2)} appearances.")
     compare(fiction, non_fiction)
-    # print(fiction[0]['genre'])
+    # print(fiction[51]['name'])
+    
 
 def analysis_three(book_list):
     print("Analysis of which book has appeared the most in the top 50's list, and how many times it has appeared")
+    names = [books['name'] for books in book_list]
+    count = dict(map(lambda books  : (books, list(names).count(books)), names))
+  
+    max_keys = [key for key, value in count.items() if value == max(count.values())]
+    max_value = max(count.values())
 
+    print(f"The book {max_keys} has appeared the most times with {max_value} appearances")
+    
+    # print(f"{max(names)}")
+    # print(min(names))
+
+    
+   
+
+    
+    
+
+    
 
 # BONUS USER STORIES:
 
