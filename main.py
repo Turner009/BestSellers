@@ -59,7 +59,8 @@ def analysis_three(book_list):
     max_value = max(count.values())
 
     print(f"The book {max_keys} has appeared the most times with {max_value} appearances")
-    
+     
+     
     # print(f"{max(names)}")
     # print(min(names))
 
